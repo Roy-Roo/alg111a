@@ -80,4 +80,4 @@ $ python HW1.py
 time cost 14.399019956588745 s
 ```
 
-![work1](D:\大三\alg\work\work1\work1.jpg)
+![work1](https://github.com/Roy-Roo/alg111a/blob/main/work/work1/work1.jpg)
