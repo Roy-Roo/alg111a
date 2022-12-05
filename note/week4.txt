@@ -1,0 +1,71 @@
+# Week 4
+
+
+
+### CnK
+
+```python
+# 直接按照Cnk的定義，速度較快，但階層數大時，可能會爆掉
+C = [[None]*100 for _ in range(100)]
+
+def c(n, k):
+    if k < 0 or k > n: return 0
+    if not C[n][k] is None: return C[n][k]
+    if k==0 or n <= 1:
+        C[n][k] = 1
+    else:
+        C[n][k] = c(n-1,k) + c(n-1, k-1)
+    return C[n][k]
+
+print("c(60,30)=", c(60,30))
+# c(60,30)= 1.1826458156486142e+17 數值大時，用浮點數表示可能會不准，但用整數表示會准，但可能會超過
+```
+
+```python
+# 遞迴式 
+def c(n, k):
+    if k < 0 or k > n: return 0
+    # if k > n-k: k = n - k
+    if k==0 or n <= 1: return 1
+    return c(n-1, k) + c(n-1, k-1) # 每一階會分成兩個，n大時會變慢
+```
+
+```python
+# 查表法
+C = [[None]*100 for _ in range(100)] # 創建一個表來存算過的
+
+def c(n, k):
+    if k < 0 or k > n: return 0
+    if not C[n][k] is None: return C[n][k] # 如果存在就直接傳回
+    if k==0 or n <= 1:
+        C[n][k] = 1
+    else:
+        C[n][k] = c(n-1,k) + c(n-1, k-1) # 如果不存在就呼叫遞迴去算
+    return C[n][k] 
+
+```
+
+```python
+# 動態規劃
+'''
+c(n, k) = 1                        , if k = 0 or k = n
+        = c(n-1, k-1) + c(n-1, k)  , if k <= n-k
+'''
+
+def c(N, K):
+    C = [None]*(N+1) 
+    for n in range(N+1):
+        C[n] = [0]*(N+1)
+        C[n][0] = 1
+        C[n][n] = 1
+    print("C=", C)
+    for n in range(N):
+        for k in range(n):
+            C[n+1][k+1] = C[n][k] + C[n][k+1]
+
+    for n in range(N+1):
+        print("C[", n, "]=", C[n])
+
+    return C[N][K]
+```
+

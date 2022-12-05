@@ -1,0 +1,240 @@
+# Week1
+
+
+
+### BubbleSort : 
+
+兩層迴圈,算法複雜度為n^2
+
+```python
+def sort(a):
+  for i in range(len(a)):
+     for j in range(i):
+       if (a[j] > a[i]):
+         t = a[i]
+         a[i] = a[j]
+         a[j] = t
+  return a
+
+print('sort([3, 8, 2, 1, 5]=', sort([3,8,2,1,5]))
+```
+
+
+
+### lsearch : 
+
+在未排序的情況下,做線性搜尋,複雜度為bigO(n)
+
+```python
+def find(a, o):
+    for i in range(len(a)):
+        if a[i] == o:
+            return i
+    return -1
+
+print(f"find([a, d, x, b, g], x)={find(['a','d','x','b','g'], 'x')}")
+```
+
+
+
+### matrixMul :
+
+矩陣乘法,複雜度為n^3
+
+```python
+def matrixMul(a, b):
+    m = len(a)
+    n = len(a[0])
+    p = len(b[0])
+    r = [[0] * p for i in range(m)]
+    for i in range(m):
+        for j in range(n):
+            for k in range(p):
+                r[i][k] += a[i][j] * b[j][k]
+    return r
+
+a = [[1,2,3],[3,2,1]]
+b = [[1,1],[1,1],[1,1]]
+
+print(matrixMul(a,b))
+```
+
+
+
+### distance : 
+
+複雜度為bigO(e)
+
+```python
+def distance(p1, p2):
+    dx = p1['x'] - p2['x']                 #1次運算
+    dy = p1['y'] - p2['y']                 #1次運算
+    return dx*dx+dy*dy #此處應該要開根號      #3次運算
+                                           #共5次   
+p1 = {'x':3, 'y':4}
+p2 = {'x': 0, 'y':0}
+
+print(f'distance({p1},{p2})={distance(p1,p2)}')
+```
+
+
+
+## 模組化方法(inc_global~物件導向) :
+
+
+
+### inc_global :
+
+全域變數亂用很危險,會很難維護,在數學上來說這並非函數,但在程式中是個函數
+
+```python
+def inc():
+    global n
+    n = n+1
+
+n = 1
+inc()
+inc()
+print(n)
+```
+
+
+
+### inc_function : 
+
+在數學以及程式中來說這是函數,有輸入輸出
+
+```python
+def inc(n):
+    return n+1
+
+x = 1
+x = inc(x)
+x = inc(x)
+print(x)
+```
+
+
+
+### 物件導向 : 
+
+* 封裝 : 將資料封在物件中,函數可使用這些資料
+
+* 繼承 : 
+
+* 多形 : 
+
+```python
+class Animal:                       #把函數(say)及資料(name)合在一個物件的結構內	
+    def __init__(self, name):
+        self.name = name
+    def say(self):
+        pass
+
+class Dog(Animal):                  #Dog繼承Animal
+    def __init__(self):
+        super().__init__("dog")
+    def say(self):
+        return "汪汪..."
+
+class Cat(Animal):                  #Cat繼承Animal   
+    def __init__(self):
+        super().__init__("cat")
+    def say(self):
+        return "喵喵..."
+
+class People(Animal):               #People繼承Animal
+    def __init__(self):
+        super().__init__("people")
+    def say(self):
+        return "你好..."
+
+zoo = [Cat(), Dog(), People()]      #多型 : 會依照name呼叫各自的say
+for animal in zoo:
+    print(animal.name, animal.say())
+```
+
+
+
+### fibonacci : 
+
+查表法
+
+```python
+from datetime import datetime
+fib = [None]*100                                   #假設n不超過100,先設一個100個空陣列
+fib[0] = 0
+fib[1] = 1
+
+def fibonacci(n):
+    if n < 0: raise
+    if not fib[n] is None: return fib[n]           #如果表裡有了,就傳回表裡的值
+    fib[n] = fibonacci(n - 1) + fibonacci(n - 2)   #如果表裡沒有,就遞迴算出來後放入表內
+    return fib[n]                                  #傳回表裡的值
+
+n = 35
+startTime = datetime.now()
+print(f'fibonacci({n})={fibonacci(n)}')
+endTime = datetime.now()
+seconds = endTime - startTime
+print(f'time:{seconds}')
+```
+
+遞迴法
+
+```python
+from datetime import datetime
+
+def fibonacci (n):
+    if n < 0: raise
+    if n == 0: return 0
+    if n == 1: return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+n = 35
+startTime = datetime.now()
+print(f'fibonacci({n})={fibonacci(n)}')
+endTime = datetime.now()
+seconds = endTime - startTime
+print(f'time:{seconds}')
+```
+
+
+
+### Cn取k :
+
+帕斯卡三角形
+
+```python
+def c(n, k):
+    if k < 0 or k > n: return 0
+    # if k > n-k: k = n - k
+    if k==0 or n <= 1: return 1
+    return c(n-1, k) + c(n-1, k-1)
+
+print("c(5,2)=", c(5,2))
+print("c(7,3)=", c(7,3))
+print("c(12,5)=", c(12,5))
+print("c(60,30)=", c(60,30))
+```
+
+
+
+### factlog :
+
+n階或2^n,先取log,算完再轉回來
+
+```python
+import math
+
+def logFactorial(n):
+    r = 0
+    for i in range(1, n+1):
+        r += math.log(i)
+    return r
+
+def factorial(n):
+    logf = logFactorial(n)
+    return int(math.exp(logf))
+```
+

@@ -1,0 +1,98 @@
+# Week 6
+
+
+
+### Hanoi
+
+```python
+# O(2^n)
+def hanoi(n, curr, dest, rest):
+    if n == 0: return
+    hanoi(n - 1, curr, rest, dest) 				
+    print(f"move {n} from {curr} to {dest}")
+    hanoi(n - 1, rest, dest, curr)
+    return
+```
+
+
+
+### GCD(遞迴) 
+
+```python
+def gcd(x, y):
+	if x == 0: return y
+	if y == 0: return x
+	return gcd(y, x % y)
+
+# 若是0與另一自然數則會回傳另一自然數
+```
+
+
+
+### GCD(迴圈)
+
+```python
+def gcd(x, y):
+    while y != 0:
+        x, y = y, x % y 		#python的平行指定，javascript使用會有bug 
+    return x
+```
+
+
+
+### power2(n) => 2^n
+
+```python
+def power2(n):
+    if n == 0:
+        return 1
+    # return power2(n-1) + power2(n-1)  # 複雜度為2^n
+    return 2*power2(n-1) 				# 複雜度為bigO(n)
+```
+
+
+
+### NoLoop
+
+```python
+# 皮亞諾算數
+def inc(n):return n+1
+def dec(n):return n-1
+
+def add(a, b):
+    return b if a == 0 else add(dec(a), inc(b))
+```
+
+
+
+### Sqrt (平方根)
+
+```python
+from math import *
+
+def sqrt(x):
+	low = 1.0
+	high = x
+	while True:
+		mid = (low+high)/2.0
+		if abs(mid*mid-x)<0.0001:
+			return mid
+		elif mid*mid>x:
+			high = mid
+		elif mid*mid<x:
+			low = mid
+```
+
+
+
+### fp
+
+```python
+from functools import reduce
+
+a = range(1,5)
+print(list(map(lambda x:x*x, a)))
+print(list(filter(lambda x:x%2==1, a))) #filter過濾掉偶數，留下奇數
+print(reduce(lambda x,y:x+y, a))
+```
+
