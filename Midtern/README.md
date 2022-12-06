@@ -6,7 +6,7 @@
 
 取自 CPE d261. 11000 (2022/05/24 考古題 第二題) https://cpe.cse.nsysu.edu.tw/cpe/file/attendance/problemPdf/11000.pdf
 
-https://github.com/Roy-Roo/alg111a/blob/main/Midtern/mid1.jpg
+![mid1](https://github.com/Roy-Roo/alg111a/blob/main/Midtern/mid1.jpg)
 
 
 
@@ -14,11 +14,11 @@ https://github.com/Roy-Roo/alg111a/blob/main/Midtern/mid1.jpg
 
 
 
-
-
 ### 暴力法
 
 * 本程式為原創
+
+
 
 ```c++
 #include <iostream>
