@@ -1,14 +1,3 @@
-# HW 2 請列舉所有的組合 C(n,k) 種
-
-
-
-參考 : https://gitlab.com/cccnqu111/alg/-/tree/master/08a-enumerate
-
-
-
-### 系統式列舉
-
-```python
 def factorial(n):
     if n == 0:
         return 1
@@ -31,16 +20,3 @@ for i in range(1, 4):
             k = j
         print(f"[{i}, {j}]")
 print(f"C(3, 2) = {combinations(n, k)}")
-```
-
-* 輸出 : 
-
-```
-羅彥翔@MSI MINGW64 /d/大三/alg (master)
-$ C:/Users/88693/AppData/Local/Microsoft/WindowsApps/python3.10.exe d:/大三/alg/work/work2/Cnk.py
-範例 : C3取2
-[2, 1]
-[3, 1]
-[3, 2]
-C(3, 2) = 3.0
-```
