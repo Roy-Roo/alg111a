@@ -1,3 +1,8 @@
+import random
+
+randomnum1=random.randint(1,10)
+randomnum2=random.randint(1,randomnum1)  
+
 def C(n, k):
     global selected
     selected = [0] * k
@@ -11,4 +16,4 @@ def combinations(i, start, n, k):
       selected[i] = j
       combinations(i + 1, j + 1, n, k)
 
-C(5, 3)
+C(randomnum1, randomnum2)
