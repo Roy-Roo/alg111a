@@ -1,19 +1,14 @@
 import random
 
-randomnum1=random.randint(1,10)
-randomnum2=random.randint(1,randomnum1)  
+def rdCombined(cn, k):
+    N = cn.copy()
+    chooses = []
+    for _ in range(k):
+        i = random.randrange(0, len(N))
+        chooses.append(N[i])
+        del N[i]
+    return chooses
 
-def C(n, k):
-    global selected
-    selected = [0] * k
-    combinations(0, 1, n, k)
-
-def combinations(i, start, n, k):
-  if i == k:
-    print(selected)
-  else:
-    for j in range(start, n+1):
-      selected[i] = j
-      combinations(i + 1, j + 1, n, k)
-
-C(randomnum1, randomnum2)
+N = [1,2,3,4,5]
+for _ in range(10):
+    print(rdCombined(N, 2))
