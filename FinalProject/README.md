@@ -21,13 +21,11 @@
 * 使用埃拉托茨篩法建立值數表
 
 ```python
-# 預先建立質數表
 WORD_NUM = 62
 MAX_SIZE = 2000
 prime = [True] * MAX_SIZE
 prime[0] = False
 
-# 從 2 到 sqrt(MAX_SIZE) 做標記
 for i in range(2, int(MAX_SIZE ** 0.5) + 1):
     if prime[i - 1]:
         for j in range(2, (MAX_SIZE // i) + 1):
@@ -36,7 +34,6 @@ for i in range(2, int(MAX_SIZE ** 0.5) + 1):
 n = int(input())
 for i in range(1, n+1):
     s = input()
-    # 計算每個字元的出現次數
     frequency = [0] * WORD_NUM
     for j in range(len(s)):
         if '0' <= s[j] <= '9':
@@ -46,13 +43,10 @@ for i in range(1, n+1):
         elif 'a' <= s[j] <= 'z':
             frequency[ord(s[j]) - ord('a') + 36] += 1
     print("Case {}: ".format(i), end='')
-     # 用來記錄是否有字元次數為質數
     empty = True
     for j in range(WORD_NUM):
-        # 如果有字元次數為質數，則輸出
         if frequency[j] and prime[frequency[j] - 1]:
             empty = False
-             # 轉換成字元並輸出
             if j < 10:
                 print(chr(j + ord('0')), end='')
             elif j < 36:
