@@ -14,7 +14,7 @@
 
 
 
-### 程式碼
+### 程式碼 : 
 
 * 非原創，照著參考來源從c++改寫成python
 * ord函式為詢問ChatGPT後產生的
@@ -66,10 +66,11 @@ for i in range(1, n+1):
 
 
 
-### 輸出
+### 輸出 : 
+
+*  cpe標準測資
 
 ```
-### cpe標準測資
 羅彥翔@MSI MINGW64 /d/大三/alg/FinalProject (master)
 $ python final.py
 3 
