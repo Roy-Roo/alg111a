@@ -16,8 +16,8 @@
 
 ### 程式碼 : 
 
-* 非原創，照著參考來源從c++改寫成python
-* ord函數(也可用chr函數來查看字元的ascii碼)為詢問ChatGPT後產生的
+* 非原創，照著參考來源並詢問 ChatGPT 後從c++改寫成python
+* 創建2000範圍內的質數表，及取得字元的ASCII碼ord函數為 ChatGPT 產生後直接複製貼上
 * 使用埃拉托茨篩法建立值數表
 
 ```python
